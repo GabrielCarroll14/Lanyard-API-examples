@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background-color: black;
+    text-align: center;
+}
+
+.status {
+    margin: 2%;
+    padding: 2%;
+    background-color: #000000;
+    border-radius: 12px;
+    box-shadow: 0 0 0 0.1em rgb(192, 192, 225); /* Adjust the shadow thickness */
+    transition: transform 0.2s ease;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    display: flex;
+    align-items: center; /* Align content vertically */
+    justify-content: space-between; /* Spread items evenly */
+    transform: scale(1);
+}
+
+.status:hover {
+    transform: scale(1.05); /* Increase scale on hover */
+}

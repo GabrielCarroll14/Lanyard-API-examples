@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Lanyard example</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main>
+        <h1>Lanyard API examples</h1>
+        <section class="status">
+            <p id="discordName" style="color: rgb(192, 192, 225);">Loading data..</p>
+        </section>
+        
+    </main>
+    <script>
+
+        // Wait for the DOM content to be loaded
+        document.addEventListener("DOMContentLoaded", async () => {
+                    
+            // Fetch the API data
+            const response = await fetch("https://api.lanyard.rest/v1/users/"); // Add your user id after the 'users/'
+            const json = await response.json();
+            const data = json.data;
+
+            // Get the element that the status will be put in
+            const discordNameElement = document.getElementById('discordName');
+            const box = document.getElementById('status');
+
+            // Add conditional statments so when in dnd it comes accross as 'user is in dnd' instead on 'user is dnd'
+            if (data.discord_status == 'dnd') {
+                discordNameElement.textContent = data.discord_user.display_name + " is in do-not-disturb";
+            }
+
+            // If its not in dnd mode just do the usual thing
+            else {
+                discordNameElement.textContent = data.discord_user.display_name + " is " + data.discord_status;
+            }
+        });
+
+    </script>
+</body>
+</html>
